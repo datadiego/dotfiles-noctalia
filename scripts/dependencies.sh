@@ -94,6 +94,10 @@ curl -sL "$(curl -s https://api.github.com/repos/yutat23/lsoff/releases/latest |
 chmod +x /tmp/lsoff
 sudo mv /tmp/lsoff /usr/local/bin/lsoff
 
+# try
+sudo dnf install ruby -y
+gem install try-cli
+
 # opencode
 curl -fsSL https://opencode.ai/install | bash
 
