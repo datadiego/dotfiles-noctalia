@@ -2,7 +2,7 @@
 sudo dnf update -y
 
 # utilidades
-sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow -y
+sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop -y
 
 # alacritty
 sudo dnf install -y alacritty
@@ -87,6 +87,11 @@ rm -rf "$TMP_DIR"
 
 # csvkit
 pipx install csvkit
+
+# lsoff
+curl -sL "$(curl -s https://api.github.com/repos/yutat23/lsoff/releases/latest | grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4)" -o /tmp/lsoff
+chmod +x /tmp/lsoff
+sudo mv /tmp/lsoff /usr/local/bin/lsoff
 
 # opencode
 curl -fsSL https://opencode.ai/install | bash
