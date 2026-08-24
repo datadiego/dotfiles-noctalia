@@ -327,6 +327,12 @@ window-rule {
     open-floating true
 }
 
+// Btop opens wider by default.
+window-rule {
+    match title=r#"^btop$"#
+    default-column-width { proportion 0.66667; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -364,6 +370,8 @@ binds {
     Mod+B hotkey-overlay-title="Firefox" { spawn-sh "firefox --new-window"; }
     Mod+A hotkey-overlay-title="ChatGPT" { spawn-sh "firefox --new-window chatgpt.com"; }
     Mod+E hotkey-overlay-title="Files" { spawn-sh "nautilus --new-window"; }
+    Mod+P hotkey-overlay-title="Btop" { spawn "alacritty" "-T" "btop" "-e" "btop"; }
+    Mod+Shift+P hotkey-overlay-title="Lsoff" { spawn "alacritty" "-T" "lsoff" "-e" "lsoff"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -516,7 +524,7 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    // Mod+Shift+P { power-off-monitors; }
 }
 
 include "noctalia.kdl"
