@@ -63,6 +63,7 @@ sudo dnf remove docker \
 sudo dnf config-manager addrepo --from-repofile https://download.docker.com/linux/fedora/docker-ce.repo -y
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 sudo systemctl enable --now docker
+sudo groupadd -f docker
 sudo usermod -aG docker $USER
 
 # lazydocker
