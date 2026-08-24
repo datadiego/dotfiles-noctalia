@@ -96,7 +96,8 @@ sudo mv /tmp/lsoff /usr/local/bin/lsoff
 
 # try
 sudo dnf install ruby -y
-gem install try-cli
+echo 'gem: -n ~/.local/bin' >> ~/.gemrc
+gem install try-cli --user-install
 
 # opencode
 curl -fsSL https://opencode.ai/install | bash

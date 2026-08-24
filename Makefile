@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PACKAGES := niri bash nvim noctalia btop opencode
+PACKAGES := niri bash nvim noctalia btop opencode ruby
 #PHONY hace que siempre se ejecute la accion asociada en el Makefile
 .PHONY: install-dependencies fedora-hacking git-config
 

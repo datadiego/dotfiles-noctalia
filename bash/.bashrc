@@ -48,4 +48,5 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+export TRY_PATH=~/Documentos/tries
 eval "$(try init)"
