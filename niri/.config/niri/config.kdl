@@ -333,6 +333,12 @@ window-rule {
     default-column-width { proportion 0.66667; }
 }
 
+// Lsoff opens smaller by default.
+window-rule {
+    match title=r#"^lsoff$"#
+    default-column-width { proportion 0.33333; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
