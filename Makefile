@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PACKAGES := niri bash nvim noctalia
+PACKAGES := niri bash nvim noctalia btop
 #PHONY hace que siempre se ejecute la accion asociada en el Makefile
 .PHONY: install-dependencies fedora-hacking git-config
 
