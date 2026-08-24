@@ -1,0 +1,48 @@
+SHELL := /bin/bash
+
+PACKAGES := niri bash nvim noctalia
+#PHONY hace que siempre se ejecute la accion asociada en el Makefile
+.PHONY: install-dependencies fedora-hacking git-config
+
+help:
+	@cat logo
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
+
+install: git-config install-dependencies stow clean ## Instalar dependencias y dotfiles
+
+install-dependencies:
+	@bash scripts/dependencies.sh
+
+fedora-hacking: ## Herramientas de hacking y ciberseguridad para fedora
+	@bash scripts/cybsec-tools-fedora.sh
+
+git-config:
+	@bash scripts/git-config.sh
+
+stow:
+	@rm -f ~/.bashrc
+	@rm -rf ~/.config/nvim
+	@for pkg in $(PACKAGES); do \
+		echo "Stowing $$pkg..."; \
+		stow -S "$$pkg"; \
+	done
+
+stow-%:
+	@echo "Stowing $*..."
+	@stow -v "$*"
+
+unstow:  ## Unstow todos los paquetes
+	@for pkg in $(PACKAGES); do \
+		echo "Unstowing $$pkg..."; \
+		stow -v -D "$$pkg"; \
+	done
+
+unstow-%:  ## Unstow un paquete específico (ej: make unstow-alacritty)
+	@echo "Unstowing $*..."
+	@stow -v -D "$*"
+
+clean:  ## Limpia archivos generados
+	@rm -f alacritty/.config/alacritty/alacritty.toml
+	@rm -f i3/.config/i3/config
+	@rm -f *.zip
+	@echo "Archivos generados eliminados"
