@@ -65,7 +65,7 @@ builtin = "Gruvbox"
 
     [theme.templates]
     builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "niri", "starship" ]
-    community_ids = [ "neovim" ]
+    community_ids = [ "opencode", "neovim" ]
 
 [wallpaper]
 directory = "~/Imágenes/wallpapers"
