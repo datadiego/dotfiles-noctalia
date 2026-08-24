@@ -2,17 +2,20 @@ config_version = 13
 
 [bar.default]
 end = [
+    "bar",
     "tray",
     "notifications",
     "clipboard",
     "network",
-    "bluetooth",
     "volume",
     "brightness",
     "battery",
     "control-center",
     "session"
 ]
+
+[location]
+auto_locate = true
 
 [lockscreen_widgets]
 enabled = false
@@ -51,6 +54,9 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[plugins]
+enabled = [ "rylos/tailnet" ]
+
 [shell]
 password_style = "random"
 polkit_agent = true
@@ -64,21 +70,20 @@ post_hook = "pkill -SIGUSR1 nvim"
 builtin = "Gruvbox"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "niri", "starship" ]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "niri", "qt", "starship" ]
     community_ids = [ "opencode", "neovim" ]
 
 [wallpaper]
 directory = "~/Imágenes/wallpapers"
 
     [wallpaper.default]
-    path = "~/Imágenes/wallpapers/gruvbox/wallpapers/minimalistic/ALLqk82.png"
+    path = "/home/datadiego/Imágenes/wallpapers/gruvbox/painting/flower-basket.jpg"
 
     [wallpaper.last]
-    path = "~/Imágenes/wallpapers/gruvbox/wallpapers/minimalistic/ALLqk82.png"
+    path = "/home/datadiego/Imágenes/wallpapers/gruvbox/painting/flower-basket.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "~/Imágenes/wallpapers/gruvbox/wallpapers/minimalistic/ALLqk82.png"
+    path = "/home/datadiego/Imágenes/wallpapers/gruvbox/painting/flower-basket.jpg"
 
-    [[wallpaper.favorite]]
-    path = "~/Imágenes/wallpapers/gruvbox/wallpapers/renders/1.jpg"
-    theme_mode = "auto"
+[widget.bar]
+type = "rylos/tailnet:bar"
