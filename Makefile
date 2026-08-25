@@ -22,6 +22,7 @@ git-config:
 stow:
 	@rm -f ~/.bashrc
 	@rm -rf ~/.config/nvim
+	@rm -rf ~/.config/noctalia
 	@for pkg in $(PACKAGES); do \
 		echo "Stowing $$pkg..."; \
 		stow -S "$$pkg"; \
