@@ -64,8 +64,8 @@ hl.config({
 		rounding = 0,
 		rounding_power = 2,
 
-		active_opacity = 0.9,
-		inactive_opacity = 0.9,
+		active_opacity = 1.0,
+		inactive_opacity = 1.0,
 
 		shadow = {
 			enabled = true,
@@ -119,14 +119,17 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 0.1, bezier = "quick
 -- https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/
 hl.config({
 	dwindle = {
-		preserve_split = true,
+		force_split = 2,
+		use_active_for_splits = true,
 	},
 })
 
 -- https://wiki.hypr.land/Configuring/Layouts/Master-Layout/
 hl.config({
 	master = {
-		new_status = "master",
+		new_status = "slave",
+		new_on_active = right,
+		orientation = left,
 	},
 })
 
@@ -185,10 +188,7 @@ local mainMod = "SUPER"
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
-hl.bind(
-	mainMod .. " + M",
-	hl.dsp.exec_cmd("noctalia msg panel-toggle session")
-)
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox --new-window"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("firefox --new-window chatgpt.com"))
