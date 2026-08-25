@@ -27,7 +27,10 @@ unset rc
 export TERMINAL="alacritty"
 
 _save_cwd() {
-    [[ "$PWD" != "${_cwd_last:-}" ]] && { printf '%s\n' "$PWD" > "$HOME/.cwd"; _cwd_last="$PWD"; }
+  [[ "$PWD" != "${_cwd_last:-}" ]] && {
+    printf '%s\n' "$PWD" >"$HOME/.cwd"
+    _cwd_last="$PWD"
+  }
 }
 PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND;}'_save_cwd'
 
@@ -42,6 +45,16 @@ open() {
   nohup xdg-open "$1" >/dev/null 2>&1 &
   disown
 }
+
+git() {
+  if [[ "$1" == "clone" && "$2" == rpi:* ]]; then
+    local repo="${2#rpi:}"
+    command git clone "rpi:/media/ssd0/repos/$repo" "${@:3}"
+  else
+    command git "$@"
+  fi
+}
+
 # opencode
 export PATH=/home/datadiego/.opencode/bin:$PATH
 export BUN_INSTALL="$HOME/.bun"
