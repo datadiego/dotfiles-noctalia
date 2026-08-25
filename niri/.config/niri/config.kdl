@@ -280,7 +280,7 @@ binds {
     // If the window is already in a column, they will expel it out.
     //Mod+BracketLeft  { consume-or-expel-window-left; }
     //Mod+BracketRight { consume-or-expel-window-right; }
-
+    Mod+Shift+M repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
     // Consume one window from the right to the bottom of the focused column.
     Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
@@ -301,7 +301,7 @@ binds {
     // maximize-window-to-edges doesn't: the window expands to the edges of the screen.
     // This bind corresponds to normal window maximizing,
     // e.g. by double-clicking on the titlebar.
-    Mod+Shift+M { maximize-window-to-edges; }
+    //Mod+Shift+M { maximize-window-to-edges; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
