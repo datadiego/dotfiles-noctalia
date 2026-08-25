@@ -96,7 +96,7 @@ sudo mv /tmp/lsoff /usr/local/bin/lsoff
 
 # try
 sudo dnf install ruby -y
-echo 'gem: -n ~/.local/bin' >> ~/.gemrc
+echo 'gem: -n ~/.local/bin' >>~/.gemrc
 gem install try-cli --user-install
 
 # opencode
