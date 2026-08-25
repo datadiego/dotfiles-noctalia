@@ -2,7 +2,7 @@
 sudo dnf update -y
 
 # utilidades
-sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop -y
+sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl -y
 
 # alacritty
 sudo dnf install -y alacritty
