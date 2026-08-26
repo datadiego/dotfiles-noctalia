@@ -1,2 +1,8 @@
 *.zip
 noctalia/.local/
+
+# Noctalia auto-generated theme files
+btop/.config/btop/themes/noctalia.theme
+niri/.config/niri/noctalia.kdl
+nvim/.config/nvim/lua/matugen.lua
+opencode/.config/opencode/themes/matugen.json
