@@ -19,6 +19,12 @@ return {
     config = function()
       apply()
       vim.api.nvim_create_autocmd("VimEnter", { callback = apply })
+
+      local signal = vim.uv.new_signal()
+      signal:start("sigusr1", vim.schedule_wrap(function()
+        package.loaded["matugen"] = nil
+        apply()
+      end))
     end,
   },
 
