@@ -3,6 +3,7 @@ noctalia/.local/
 
 # Noctalia auto-generated theme files
 btop/.config/btop/themes/noctalia.theme
+hyprland/.config/hypr/noctalia.lua
 niri/.config/niri/noctalia.kdl
 nvim/.config/nvim/lua/matugen.lua
 opencode/.config/opencode/themes/matugen.json

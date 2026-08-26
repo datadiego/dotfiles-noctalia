@@ -15,5 +15,3 @@ require("misc").setup(hl)
 
 -- Noctalia theme
 
--- For Noctalia Color templates
-require("noctalia").apply_theme()
