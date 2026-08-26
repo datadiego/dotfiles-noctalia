@@ -1,7 +1,9 @@
 local function apply()
   pcall(function()
+    package.loaded["matugen"] = nil
     require("matugen").setup()
     vim.g.colors_name = "noctalia"
+    vim.cmd("doautocmd ColorScheme")
   end)
 end
 

@@ -14,4 +14,3 @@ require("window-rules").setup(hl)
 require("misc").setup(hl)
 
 -- Noctalia theme
-require("noctalia").apply_theme()
