@@ -1,5 +1,3 @@
--- KEYBINDINGS MODULE
-
 local M = {}
 
 local mainMod = "SUPER"
@@ -12,6 +10,7 @@ function M.setup(hl, terminal, fileManager)
 	hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 	hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox --new-window"))
 	hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("firefox --new-window chatgpt.com"))
+	hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("firefox --new-window youtube.com"))
 	hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 	hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 	hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(terminal .. " -e btop"))
