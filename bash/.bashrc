@@ -25,6 +25,7 @@ fi
 unset rc
 
 export TERMINAL="alacritty"
+export EDITOR="nvim"
 
 _save_cwd() {
   [[ "$PWD" != "${_cwd_last:-}" ]] && {
