@@ -11,11 +11,12 @@ function M.setup(hl)
 	})
 
 	-- configuraciones para segundo monitor
-	-- mirror
-	--hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "0x0", scale = "auto", mirror = "eDP-1" })
 
-	--scaled
-	hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "0x0", scale = "2.0" })
+	-- mirror
+	hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "0x0", scale = "auto", mirror = "eDP-1" })
+
+	-- scaled
+	--hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "1280x0", scale = 2.5 })
 end
 
 return M
