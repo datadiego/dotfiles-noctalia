@@ -1,13 +1,15 @@
 #!/bin/bash
 
-set -euo pipefail
-
 terminal_pid=""
 
-if command -v hyprctl &>/dev/null && hyprctl activewindow &>/dev/null 2>&1; then
+# Try Hyprland first
+if command -v hyprctl &>/dev/null; then
   terminal_pid=$(hyprctl activewindow 2>/dev/null | awk '/pid:/ {print $2}')
-elif command -v niri &>/dev/null; then
-  terminal_pid=$(niri msg --json focused-window 2>/dev/null | jq -r '.pid // empty')
+fi
+
+# Try Niri if Hyprland didn't work
+if [[ -z $terminal_pid ]] && command -v niri &>/dev/null; then
+  terminal_pid=$(niri msg --json focused-window 2>/dev/null | jq -r '.pid // empty' 2>/dev/null)
 fi
 
 cwd=""
@@ -18,7 +20,7 @@ if [[ -n $terminal_pid ]]; then
     cwd=$(readlink -f "/proc/$shell_pid/cwd" 2>/dev/null || true)
     if [[ -n $cwd ]]; then
       shell=$(readlink -f "/proc/$shell_pid/exe" 2>/dev/null || true)
-      if [[ -n $shell ]] && ! grep -Fqsx "$shell" /etc/shells; then
+      if [[ -n $shell ]] && ! grep -Fqsx "$shell" /etc/shells 2>/dev/null; then
         cwd=""
       fi
     fi

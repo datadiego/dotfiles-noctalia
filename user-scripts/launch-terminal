@@ -1,4 +1,3 @@
 #!/bin/bash
 
-script_dir="$(dirname "$(readlink -f "$0")")"
-exec "${TERMINAL:-alacritty}" --working-directory "$("$script_dir/terminal-cwd")" "$@"
+exec "${TERMINAL:-alacritty}" --working-directory "$(/usr/local/bin/terminal-cwd 2>/dev/null)" "$@"
