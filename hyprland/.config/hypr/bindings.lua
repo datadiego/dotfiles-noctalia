@@ -91,6 +91,11 @@ function M.setup(hl, terminal, fileManager)
 		{ locked = true, repeating = true }
 	)
 
+	-- Screenshots
+	hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
+	hl.bind("SHIFT + Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
+	hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen pick"))
+
 	-- Media keys (playerctl)
 	hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 	hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
