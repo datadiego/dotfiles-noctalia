@@ -4,7 +4,7 @@ local mainMod = "SUPER"
 
 function M.setup(hl, terminal, fileManager)
 	-- Apps
-	hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+	hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("launch-terminal"))
 	hl.bind(mainMod .. " + W", hl.dsp.window.close())
 	hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 	hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))

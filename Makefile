@@ -8,7 +8,7 @@ help:
 	@cat logo
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-install: git-config install-dependencies stow clean ## Instalar dependencias y dotfiles
+install: git-config install-dependencies stow post-install clean ## Instalar dependencias y dotfiles
 
 install-dependencies:
 	@bash scripts/dependencies.sh
@@ -28,6 +28,10 @@ stow:
 		stow -S "$$pkg"; \
 	done
 
+post-install:
+	@sudo cp ./user-scripts/launch-terminal /usr/local/bin/
+	@sudo cp ./user-scripts/terminal-cwd /usr/local/bin/
+
 stow-%:
 	@echo "Stowing $*..."
 	@stow -v "$*"
@@ -43,7 +47,5 @@ unstow-%:  ## Unstow un paquete específico (ej: make unstow-alacritty)
 	@stow -v -D "$*"
 
 clean:  ## Limpia archivos generados
-	@rm -f alacritty/.config/alacritty/alacritty.toml
-	@rm -f i3/.config/i3/config
 	@rm -f *.zip
 	@echo "Archivos generados eliminados"

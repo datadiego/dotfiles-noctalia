@@ -194,7 +194,7 @@ overview {
 binds {
     //Mod+H { show-hotkey-overlay; }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "launch-terminal"; }
     //Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Space repeat=false hotkey-overlay-title="Launcher: Noctalia" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+Shift+C repeat=false hotkey-overlay-title="Settings: Noctalia" { spawn-sh "noctalia msg settings-toggle"; }
