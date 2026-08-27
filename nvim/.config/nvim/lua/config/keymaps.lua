@@ -19,3 +19,8 @@ end
 
 vim.keymap.set('n', '<C-Right>', function() smart_resize('>') end, { desc = 'Resize: move separator right' })
 vim.keymap.set('n', '<C-Left>', function() smart_resize('<') end, { desc = 'Resize: move separator left' })
+
+vim.keymap.set('n', '<A-Left>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<A-Down>', '<C-w>j', { desc = 'Move to split below' })
+vim.keymap.set('n', '<A-Up>', '<C-w>k', { desc = 'Move to split above' })
+vim.keymap.set('n', '<A-Right>', '<C-w>l', { desc = 'Move to right split' })
