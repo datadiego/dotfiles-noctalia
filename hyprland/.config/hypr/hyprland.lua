@@ -2,11 +2,8 @@
 local terminal = "alacritty"
 local fileManager = "nautilus"
 
--- modos scale o mirror para segundo monitor
-local monitorMode = "scale"
-
 -- Load modules
-require("monitors").setup(hl, monitorMode)
+require("monitors").setup(hl)
 require("autostart").setup(hl)
 require("env").setup(hl)
 require("appearance").setup(hl)
