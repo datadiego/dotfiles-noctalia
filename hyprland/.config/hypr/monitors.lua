@@ -2,6 +2,8 @@
 
 local M = {}
 
+local EXTERNAL_SCALE = 1.0
+
 local function getMonitorMode()
 	local file = io.open(os.getenv("HOME") .. "/.config/hypr/monitor_mode", "r")
 	if file then
@@ -25,7 +27,7 @@ function M.setup(hl)
 	if monitorMode == "mirror" then
 		hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "0x0", scale = "auto", mirror = "eDP-1" })
 	else
-		hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "1280x0", scale = 1.0 })
+		hl.monitor({ output = "HDMI-A-1", mode = "preferred", position = "1280x0", scale = EXTERNAL_SCALE })
 	end
 end
 
