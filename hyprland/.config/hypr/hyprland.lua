@@ -2,8 +2,11 @@
 local terminal = "alacritty"
 local fileManager = "nautilus"
 
+-- modos scale o mirror para segundo monitor
+local monitorMode = "scale"
+
 -- Load modules
-require("monitors").setup(hl)
+require("monitors").setup(hl, monitorMode)
 require("autostart").setup(hl)
 require("env").setup(hl)
 require("appearance").setup(hl)
@@ -14,4 +17,3 @@ require("window-rules").setup(hl)
 require("misc").setup(hl)
 
 -- Noctalia theme
-
