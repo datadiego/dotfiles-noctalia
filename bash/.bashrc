@@ -56,6 +56,40 @@ git() {
   fi
 }
 
+search-text() {
+  local file
+  local key
+
+  while true; do
+    file=$(
+      fzf --ansi --disabled \
+        --bind "change:reload:rg --line-number --no-heading --color=always --smart-case {q} . || true" \
+        --delimiter ':' \
+        --preview 'bat --color=always --style=numbers --highlight-line {2} {1}' \
+        --expect=enter,ctrl-e
+    )
+
+    [[ -z "$file" ]] && return
+
+    key=$(head -n1 <<<"$file")
+    file=$(tail -n1 <<<"$file")
+
+    case "$key" in
+    ctrl-e)
+      "${EDITOR:-vim}" \
+        "+$(cut -d: -f2 <<<"$file")" \
+        "$(cut -d: -f1 <<<"$file")"
+      return
+      ;;
+
+    enter)
+      cd -- "$(dirname -- "$(cut -d: -f1 <<<"$file")")"
+      return
+      ;;
+    esac
+  done
+}
+
 # opencode
 export PATH=/home/datadiego/.opencode/bin:$PATH
 export BUN_INSTALL="$HOME/.bun"
