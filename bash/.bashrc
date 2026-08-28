@@ -55,7 +55,6 @@ git() {
     command git "$@"
   fi
 }
-
 search-text() {
   local result
   local key
@@ -66,7 +65,7 @@ search-text() {
   if [[ -n "$glob" ]]; then
     result=$(
       fzf --ansi --disabled \
-        --bind "change:reload:rg --line-number --no-heading --color=always --smart-case --glob '$glob' {q} . || true" \
+        --bind "change:reload:rg --line-number --no-heading --color=never --smart-case --glob '$glob' {q} . | cut -d: -f1-2 || true" \
         --delimiter ':' \
         --preview 'bat --color=always --style=numbers --highlight-line {2} {1}' \
         --expect=enter,ctrl-d
@@ -74,7 +73,7 @@ search-text() {
   else
     result=$(
       fzf --ansi --disabled \
-        --bind "change:reload:rg --line-number --no-heading --color=always --smart-case {q} . || true" \
+        --bind "change:reload:rg --line-number --no-heading --color=never --smart-case {q} . | cut -d: -f1-2 || true" \
         --delimiter ':' \
         --preview 'bat --color=always --style=numbers --highlight-line {2} {1}' \
         --expect=enter,ctrl-d
@@ -88,7 +87,6 @@ search-text() {
 
   file="${result%%:*}"
   line="${result#*:}"
-  line="${line%%:*}"
 
   case "$key" in
   enter)
@@ -100,7 +98,6 @@ search-text() {
     ;;
   esac
 }
-
 # opencode
 export PATH=/home/datadiego/.opencode/bin:$PATH
 export BUN_INSTALL="$HOME/.bun"
