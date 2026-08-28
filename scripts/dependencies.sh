@@ -2,7 +2,7 @@
 sudo dnf update -y
 
 # utilidades
-sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl -y
+sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl fd -y
 
 # hyprland
 sudo dnf copr enable sdegler/hyprland -y
