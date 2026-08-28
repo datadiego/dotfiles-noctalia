@@ -24,3 +24,6 @@ vim.keymap.set('n', '<A-Left>', '<C-w>h', { desc = 'Move to left split' })
 vim.keymap.set('n', '<A-Down>', '<C-w>j', { desc = 'Move to split below' })
 vim.keymap.set('n', '<A-Up>', '<C-w>k', { desc = 'Move to split above' })
 vim.keymap.set('n', '<A-Right>', '<C-w>l', { desc = 'Move to right split' })
+
+vim.keymap.set('n', '<C-Tab>', '<CMD>bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<C-S-Tab>', '<CMD>bprevious<CR>', { desc = 'Previous buffer' })
