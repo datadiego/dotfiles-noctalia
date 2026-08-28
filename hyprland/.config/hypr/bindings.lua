@@ -38,6 +38,23 @@ function M.setup(hl, terminal, fileManager)
 	hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 	hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
 	hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+	hl.bind(mainMod .. " + N", function()
+		local state_file = os.getenv("HOME") .. "/.config/hypr/.layout_toggle_state"
+		local current = "dwindle"
+		local f = io.open(state_file, "r")
+		if f then
+			current = f:read("*l") or "dwindle"
+			f:close()
+		end
+		local new_layout = (current == "dwindle") and "scrolling" or "dwindle"
+		local wf = io.open(state_file, "w")
+		if wf then
+			wf:write(new_layout)
+			wf:close()
+		end
+		hl.dispatch(hl.dsp.exec_cmd("hyprctl eval 'hl.config({ general = { layout = \"" .. new_layout .. "\" } })'"))
+		hl.dispatch(hl.dsp.exec_cmd("notify-send -t 2000 'Modo cambiado a " .. new_layout .. "'"))
+	end)
 
 	-- Focus movement
 	hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
