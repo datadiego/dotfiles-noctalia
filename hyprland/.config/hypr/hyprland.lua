@@ -5,7 +5,7 @@ local fileManager = "nautilus"
 -- Load modules
 require("monitors").setup(hl)
 require("autostart").setup(hl)
-require("env").setup(hl)
+require("env").setup(hl, terminal)
 require("appearance").setup(hl)
 require("layouts").setup(hl)
 require("input").setup(hl)
