@@ -12,7 +12,26 @@ function M.setup(hl, terminal, fileManager)
 	hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox --new-window"))
 	hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("firefox --new-window chatgpt.com"))
 	hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd("firefox --new-window youtube.com"))
-	hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+	hl.bind(mainMod .. " + T", function()
+		local win = hl.get_active_window()
+		if win.floating then
+			hl.dispatch(hl.dsp.window.float({ action = "unset" }))
+		else
+			hl.dispatch(hl.dsp.window.float({ action = "set" }))
+			local monitors = hl.get_monitors()
+			local mon = monitors[1]
+			for _, m in ipairs(monitors) do
+				if m.id == win.monitor then
+					mon = m
+					break
+				end
+			end
+			local w = math.floor(mon.width * 0.7)
+			local h = math.floor(mon.height * 0.8)
+			hl.dispatch(hl.dsp.exec_cmd("hyprctl dispatch resize exact " .. w .. " " .. h))
+			hl.dispatch(hl.dsp.window.center())
+		end
+	end)
 	hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 	hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(terminal .. " -e btop"))
 	hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(terminal .. " -e lsoff"))
