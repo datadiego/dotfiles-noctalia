@@ -17,13 +17,15 @@ local function smart_resize(direction)
   vim.cmd('wincmd ' .. direction)
 end
 
-vim.keymap.set('n', '<C-Right>', function() smart_resize('>') end, { desc = 'Resize: move separator right' })
-vim.keymap.set('n', '<C-Left>', function() smart_resize('<') end, { desc = 'Resize: move separator left' })
+vim.keymap.set('n', '<A-Right>', function() smart_resize('>') end, { desc = 'Resize: move separator right' })
+vim.keymap.set('n', '<A-Left>', function() smart_resize('<') end, { desc = 'Resize: move separator left' })
+vim.keymap.set('n', '<A-Down>', function() smart_resize('+') end, { desc = 'Resize: move separator down' })
+vim.keymap.set('n', '<A-Up>', function() smart_resize('-') end, { desc = 'Resize: move separator up' })
 
-vim.keymap.set('n', '<A-Left>', '<C-w>h', { desc = 'Move to left split' })
-vim.keymap.set('n', '<A-Down>', '<C-w>j', { desc = 'Move to split below' })
-vim.keymap.set('n', '<A-Up>', '<C-w>k', { desc = 'Move to split above' })
-vim.keymap.set('n', '<A-Right>', '<C-w>l', { desc = 'Move to right split' })
+vim.keymap.set('n', '<C-Left>', '<C-w>h', { desc = 'Move to left split' })
+vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Move to split below' })
+vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Move to split above' })
+vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Move to right split' })
 
 vim.keymap.set('n', '<C-Tab>', '<CMD>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<C-S-Tab>', '<CMD>bprevious<CR>', { desc = 'Previous buffer' })
