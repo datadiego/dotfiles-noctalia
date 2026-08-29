@@ -2,13 +2,16 @@ SHELL := /bin/bash
 
 PACKAGES := hyprland niri bash nvim noctalia btop opencode ruby
 #PHONY hace que siempre se ejecute la accion asociada en el Makefile
-.PHONY: help install install-dependencies fedora-hacking git-config stow post-install stow-% unstow unstow-% clean
+.PHONY: help install install-dependencies fedora-hacking git-config stow post-install check-sudo stow-% unstow unstow-% clean
 
 help:
 	@cat logo
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-install: git-config install-dependencies stow post-install clean ## Instalar dependencias y dotfiles
+check-sudo: ## Solicita sudo una sola vez al inicio
+	@sudo -v
+
+install: check-sudo git-config install-dependencies stow post-install clean ## Instalar dependencias y dotfiles
 
 install-dependencies:
 	@bash scripts/dependencies.sh
