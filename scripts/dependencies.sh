@@ -9,10 +9,10 @@ sudo dnf copr enable sdegler/hyprland -y
 sudo dnf install hyprland hyprpaper hyprlock hypridle hyprsunset -y
 
 # niri
-sudo dnf install niri
+sudo dnf install niri -y
 
 # noctalia
-sudo dnf install noctalia
+sudo dnf install noctalia -y
 
 # alacritty
 sudo dnf install -y alacritty
@@ -42,7 +42,7 @@ fc-cache -f -v
 
 # gh cli
 sudo dnf install dnf5-plugins -y
-sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
+sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo -y
 sudo dnf install gh --repo gh-cli -y
 
 # entorno javascript
