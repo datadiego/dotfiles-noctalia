@@ -25,13 +25,6 @@ export TERMINAL="alacritty"
 export EDITOR="nvim"
 
 eval "$(fzf --bash)"
-alias cd="z"
-alias n="nvim"
-alias c="code"
-alias nano="micro"
-alias ls="eza -l"
-
-# opencode
 export PATH=/home/datadiego/.opencode/bin:$PATH
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"

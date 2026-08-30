@@ -1,0 +1,7 @@
+alias lg="lazygit"
+alias cd="z"
+alias n="nvim"
+alias c="code"
+alias nano="micro"
+alias ls="eza -l"
+alias la="eza -la"
