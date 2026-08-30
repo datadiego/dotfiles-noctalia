@@ -1,5 +1,3 @@
-# .bashrc
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
@@ -21,14 +19,7 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-export TERMINAL="alacritty"
-export EDITOR="nvim"
-
 eval "$(fzf --bash)"
-export PATH=/home/datadiego/.opencode/bin:$PATH
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-export TRY_PATH=~/Documentos/tries
 eval "$(try init)"
