@@ -7,6 +7,7 @@ hyprland/.config/hypr/noctalia.lua
 niri/.config/niri/noctalia.kdl
 nvim/.config/nvim/lua/matugen.lua
 opencode/.config/opencode/themes/matugen.json
+alacritty/.config/alacritty/themes
 
 # Hyprland estado de runtime (los regenera el sistema)
 hyprland/.config/hypr/.layout_toggle_state
