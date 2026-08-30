@@ -48,3 +48,8 @@ sudo dnf install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
+
+# try
+sudo dnf install ruby -y
+echo 'gem: -n ~/.local/bin' >>~/.gemrc
+gem install try-cli --user-install
