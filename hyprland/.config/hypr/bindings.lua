@@ -69,10 +69,10 @@ function M.setup(hl, terminal, fileManager)
 	hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
 
 	-- Window resize
-	hl.bind("ALT + left", hl.dsp.window.resize({ x = -40, y = 0, relative = true }))
-	hl.bind("ALT + right", hl.dsp.window.resize({ x = 40, y = 0, relative = true }))
-	hl.bind("ALT + up", hl.dsp.window.resize({ x = 0, y = -40, relative = true }))
-	hl.bind("ALT + down", hl.dsp.window.resize({ x = 0, y = 40, relative = true }))
+	hl.bind(mainMod .. " + ALT + left", hl.dsp.window.resize({ x = -40, y = 0, relative = true }))
+	hl.bind(mainMod .. " + ALT + right", hl.dsp.window.resize({ x = 40, y = 0, relative = true }))
+	hl.bind(mainMod .. " + ALT + up", hl.dsp.window.resize({ x = 0, y = -40, relative = true }))
+	hl.bind(mainMod .. " + ALT + down", hl.dsp.window.resize({ x = 0, y = 40, relative = true }))
 
 	-- Workspaces 1-10
 	for i = 1, 10 do
