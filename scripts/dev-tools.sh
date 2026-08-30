@@ -59,10 +59,5 @@ sudo systemctl enable --now docker
 sudo groupadd -f docker
 sudo usermod -aG docker $USER
 
-# try
-sudo dnf install ruby -y
-echo 'gem: -n ~/.local/bin' >>~/.gemrc
-gem install try-cli --user-install
-
 # opencode
 curl -fsSL https://opencode.ai/install | bash

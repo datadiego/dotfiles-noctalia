@@ -4,16 +4,6 @@ sudo dnf update -y
 # utilidades
 sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl fd curl wget -y
 
-# hyprland
-sudo dnf copr enable sdegler/hyprland -y
-sudo dnf install hyprland hyprpaper hyprlock hypridle hyprsunset -y
-
-# niri
-#sudo dnf install niri -y
-
-# noctalia
-sudo dnf install noctalia -y
-
 # alacritty
 sudo dnf install -y alacritty
 
