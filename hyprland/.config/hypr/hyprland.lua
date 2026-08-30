@@ -1,5 +1,5 @@
 -- variables
-local terminal = "alacritty"
+local terminal = "kitty"
 local fileManager = "nautilus"
 
 -- Load modules
