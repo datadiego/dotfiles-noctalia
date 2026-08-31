@@ -31,3 +31,25 @@ vim.keymap.set('n', '<C-Tab>', '<CMD>bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<C-S-Tab>', '<CMD>bprevious<CR>', { desc = 'Previous buffer' })
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+local function terminal_float()
+  local buf = vim.api.nvim_create_buf(false, true)
+
+  local width = math.floor(vim.o.columns * 0.8)
+  local height = math.floor(vim.o.lines * 0.8)
+
+  vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    width = width,
+    height = height,
+    row = math.floor((vim.o.lines - height) / 2),
+    col = math.floor((vim.o.columns - width) / 2),
+    border = "rounded",
+  })
+
+  vim.cmd("terminal")
+  vim.cmd("startinsert")
+end
+
+vim.keymap.set("n", "<leader>tf", terminal_float, { desc = "Open floating terminal" })
+
