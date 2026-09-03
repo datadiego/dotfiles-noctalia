@@ -6,3 +6,7 @@ local opt = vim.opt
 
 opt.sidescrolloff = 4  -- Columns of context (reducido de 8)
 opt.sidescroll = 1     -- Columns to scroll horizontally
+
+-- Disable default SQL ftplugin arrow key mappings that call sqlcomplete# functions
+-- (incompatible with blink.cmp/dadbod-completion used by LazyVim)
+vim.g.omni_sql_no_default_maps = true
