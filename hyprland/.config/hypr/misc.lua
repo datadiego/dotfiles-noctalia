@@ -9,6 +9,12 @@ function M.setup(hl)
 			disable_hyprland_logo = false,
 		},
 	})
+
+	hl.config({
+		xwayland = {
+			force_zero_scaling = true,
+		},
+	})
 end
 
 return M
