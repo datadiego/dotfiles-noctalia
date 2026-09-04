@@ -53,3 +53,6 @@ end
 
 vim.keymap.set("n", "<leader>tf", terminal_float, { desc = "Open floating terminal" })
 
+vim.keymap.set('n', '<leader>cc', 'gcc', { desc = 'Toggle comment line', remap = true })
+vim.keymap.set('x', '<leader>cc', 'gc', { desc = 'Toggle comment selection', remap = true })
+
