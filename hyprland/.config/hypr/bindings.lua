@@ -128,9 +128,9 @@ function M.setup(hl, terminal, fileManager)
 	)
 
 	-- Screenshots
-	hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
-	hl.bind("SHIFT + Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
-	hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen pick"))
+	hl.bind("Print", hl.dsp.exec_cmd("hyprshot -m window -c && notify-send 'Screenshot' 'Copiado al portapapeles'"))
+	hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m output -c && notify-send 'Screenshot' 'Copiado al portapapeles'"))
+	hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("hyprshot -m region -c && notify-send 'Screenshot' 'Copiado al portapapeles'"))
 
 	-- Media keys (playerctl)
 	hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
