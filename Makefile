@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PACKAGES := hyprland niri bash nvim noctalia btop opencode ruby
+PACKAGES := hyprland niri bash nvim noctalia btop opencode ruby navi
 #PHONY hace que siempre se ejecute la accion asociada en el Makefile
 .PHONY: help install common coding hacking hacking-tools dev-tools install-dependencies install-noctalia git-config stow post-install check-sudo unstow clean
 
