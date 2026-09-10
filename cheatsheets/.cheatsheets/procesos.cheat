@@ -1,0 +1,58 @@
+# Procesos
+
+% Listar procesos
+ps aux
+
+% Buscar proceso por nombre
+ps aux | grep <proceso>
+
+% Matar proceso por nombre
+pkill <nombre>
+
+% Matar proceso por PID
+pkill --pid <PID>
+
+% Matar todos los procesos
+killall <nombre>
+
+% Mostrar árbol de procesos
+pstree
+
+% Monitorear procesos en tiempo real
+top
+
+% Monitorear procesos en tiempo real (mejorado)
+htop
+
+% Buscar proceso por nombre (solo PID)
+pgrep -a <proceso>
+
+% Matar proceso por PID
+kill <PID>
+
+% Forzar terminar proceso
+kill -9 <PID>
+
+% Ver procesos de un usuario
+ps -u <usuario>
+
+% Ver prioridad de procesos
+ps -eo pid,user,priority,ni,comm
+
+% Ejecutar proceso en segundo plano
+<comando> &
+
+% Traer proceso en segundo plano al frente
+fg %<n>
+
+% Poner proceso en segundo plano
+bg %<n>
+
+% Listar trabajos en segundo plano
+jobs
+
+% Ver carga del sistema
+uptime
+
+% Matar procesos que coincidan con un patrón
+pkill -f "<patrón>"

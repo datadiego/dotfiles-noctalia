@@ -1,0 +1,4 @@
+# Modificar texto
+
+% Eliminar caracteres
+tr -d <abcde>

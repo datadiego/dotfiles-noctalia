@@ -1,0 +1,55 @@
+# Network
+
+% Puertos en uso
+netstat -putan
+
+% Buscar proceso por puerto
+netstat -putan | grep <puerto>
+
+% Tarjetas de red
+ip a
+
+% Tabla de rutas
+ip route
+
+% Ping a un host
+ping <host>
+
+% Ping con límite de paquetes
+ping -c 4 <host>
+
+% Consultas DNS
+dig <dominio>
+
+% Consulta DNS simple
+nslookup <dominio>
+
+% Descargar archivo
+wget <url>
+
+% Prueba HTTP
+curl <url>
+
+% Ver cabeceras HTTP
+curl -I <url>
+
+% Conexión SSH
+ssh usuario@host
+
+% Copiar archivos por SSH
+scp <origen> usuario@host:<destino>
+
+% Puertos vecinos
+ip neigh
+
+% Conectar a un puerto
+nc -vz <host> <puerto>
+
+% Muestreo de tráfico de red
+tcpdump -i <interfaz>
+
+% DNS de un equipo
+host <dominio>
+
+% Medir velocidad de descarga
+speedtest-cli

@@ -1,0 +1,9 @@
+# Grep
+
+% Buscar contenido en archivos
+grep -r <texto> <directorio>
+
+% Buscar texto en archivos con número de línea
+grep -rn <texto> <directorio>
+
+

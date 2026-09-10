@@ -1,0 +1,8 @@
+# Permisos
+
+% Cambiar permisos
+chmod 755 <archivo>
+
+% Cambiar propietario
+chown <usuario> <archivo>
+

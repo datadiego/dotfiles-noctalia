@@ -1,0 +1,85 @@
+# Sed
+
+% Reemplazar texto en una línea
+sed 's/antiguo/nuevo/' archivo.txt
+
+% Reemplazar todas las ocurrencias por línea
+sed 's/antiguo/nuevo/g' archivo.txt
+
+% Editar archivo in-place
+sed -i 's/antiguo/nuevo/g' archivo.txt
+
+% Editar in-place con backup
+sed -i.bak 's/antiguo/nuevo/g' archivo.txt
+
+% Eliminar una línea por número
+sed '3d' archivo.txt
+
+% Eliminar un rango de líneas
+sed '2,5d' archivo.txt
+
+% Eliminar última línea
+sed '$d' archivo.txt
+
+% Eliminar líneas que coincidan con un patrón
+sed '/patrón/d' archivo.txt
+
+% Eliminar líneas vacías
+sed '/^$/d' archivo.txt
+
+% Eliminar comentarios
+sed '/^#/d' archivo.txt
+
+% Imprimir solo una línea
+sed -n '5p' archivo.txt
+
+% Imprimir un rango de líneas
+sed -n '2,8p' archivo.txt
+
+% Imprimir bloque entre dos patrones
+sed -n '/inicio/,/fin/p' archivo.txt
+
+% Insertar línea antes de un número
+sed '3i\Nueva línea' archivo.txt
+
+% Agregar línea después de un número
+sed '3a\Nueva línea' archivo.txt
+
+% Agregar línea al final del archivo
+sed '$a\Fin del archivo' archivo.txt
+
+% Reemplazar solo la segunda ocurrencia por línea
+sed 's/antiguo/nuevo/2' archivo.txt
+
+% Eliminar espacios iniciales
+sed 's/^[[:space:]]*//' archivo.txt
+
+% Eliminar espacios finales
+sed 's/[[:space:]]*$//' archivo.txt
+
+% Reemplazar en primeras 3 líneas
+sed '1,3s/antiguo/nuevo/g' archivo.txt
+
+% Reemplazar desde línea 100 al final
+sed '100,$s/antiguo/nuevo/g' archivo.txt
+
+% Envolver texto entre corchetes
+sed 's/\(foo\)/[\1]/g' archivo.txt
+
+% Invertir campos separados por dos puntos
+sed 's/\(.*\):\(.*\)/\2:\1/' archivo.txt
+
+% Reemplazar y eliminar vacías
+sed -e 's/foo/bar/g' -e '/^$/d' archivo.txt
+
+% Reemplazar solo dentro de un bloque
+sed '/start/,/end/{s/old/new/g}' archivo.txt
+
+% Reemplazar con entrada de pipe
+echo "hola mundo" | sed 's/mundo/bash/'
+
+% Agregar prefijo a cada línea
+ls | sed 's/^/Archivo: /'
+
+% Imprimir solo líneas modificadas
+sed -n '/patrón/{s/antiguo/nuevo/p}' archivo.txt

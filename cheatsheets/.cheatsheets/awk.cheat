@@ -1,0 +1,89 @@
+# Awk
+
+% Imprimir todas las líneas
+awk '{print}' archivo.txt
+
+% Imprimir columna 1 y 3 (por defecto separa por espacios)
+awk '{print $1, $3}' archivo.txt
+
+% Imprimir última columna
+awk '{print $NF}' archivo.txt
+
+% Imprimir línea completa con su número
+awk '{print NR, $0}' archivo.txt
+
+% Separar por un delimitador específico (ej. dos puntos)
+awk -F: '{print $1}' /etc/passwd
+
+% Imprimir columnas con formato
+awk '{printf "%-10s %s\n", $1, $2}' archivo.txt
+
+% Filtrar líneas que coincidan con un patrón
+awk '/error/' archivo.log
+
+% Filtrar líneas que NO coincidan con un patrón
+awk '!/error/' archivo.log
+
+% Imprimir columnas si un campo cumple una condición
+awk '$3 > 100 {print $1, $3}' archivo.txt
+
+% Imprimir columnas de la línea 2 a la 5
+awk 'NR >= 2 && NR <= 5 {print}' archivo.txt
+
+% Omitir la primera línea (encabezados)
+awk 'NR > 1 {print}' archivo.txt
+
+% Sumar los valores de una columna
+awk '{sum += $2} END {print sum}' archivo.txt
+
+% Promedio de una columna
+awk '{sum += $2; n++} END {print sum/n}' archivo.txt
+
+% Contar número de líneas (total y por patrón)
+awk '/error/ {cont++} END {print cont}' archivo.log
+
+% Valor máximo y mínimo de una columna
+awk 'NR == 1 || $2 > max {max = $2} {if ($2 < min || NR == 1) min = $2} END {print "max:", max, "min:", min}' archivo.txt
+
+% Número de líneas, palabras y caracteres (como wc)
+awk '{lineas++; palabras += NF; chars += length($0)} END {print lineas, palabras, chars}' archivo.txt
+
+% Eliminar líneas duplicadas (como uniq)
+awk '!visto[$0]++' archivo.txt
+
+% Agrupar y contar por campo
+awk -F: '{cont[$1]++} END {for (k in cont) print k, cont[k]}' archivo.txt
+
+% Concatenerar líneas con un separador
+awk '{printf "%s%s", sep, $0; sep = ","} END {print ""}' archivo.txt
+
+% Imprimir longitud de cada línea
+awk '{print length($0), NR}' archivo.txt
+
+% Reemplazar texto en una columna
+awk '{$2 = "NUEVO"} {print}' archivo.txt
+
+% Mayúsculas / minúsculas
+awk '{print toupper($0)}' archivo.txt
+awk '{print tolower($0)}' archivo.txt
+
+% Extraer campo único de un archivo (como cut)
+awk -F, -v col=2 '{print $col}' archivo.csv
+
+% Operar con fechas (timestamp a formato legible)
+awk '{print strftime("%Y-%m-%d %H:%M:%S", $1)}' archivo.txt
+
+% Convertir a número y redondear
+awk '{$2 = int($2); print}' archivo.txt
+
+% Imprimir líneas de forma intercalada (1 de cada 2)
+awk 'NR % 2 == 1' archivo.txt
+
+% Unir dos archivos por el primer campo
+awk 'NR == FNR {dato[$1] = $2; next} {print $1, dato[$1]}' claves.txt valores.txt
+
+% Procesar con variable de entorno
+awk -v usuario="$USER" '{print usuario, $0}' archivo.txt
+
+% Filtros combinados con otros comandos
+ps aux | awk '$3 > 10 {print $1, $2, $3}'

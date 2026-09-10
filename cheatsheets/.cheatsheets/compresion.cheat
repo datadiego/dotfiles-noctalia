@@ -1,0 +1,8 @@
+# Compresion de archivos
+
+% Comprimir archivo
+tar -czf <archivo>.tar.gz <ruta>
+
+% Descomprimir archivo
+tar -xzf <archivo>.tar.gz
+

@@ -1,0 +1,11 @@
+# Discos
+
+% Grabar imagen en USB
+sudo dd if=<archivo.iso> of=</dev/sdb> bs=4M status=progress conv=fsync
+
+% Ver uso del disco
+df -h
+
+% Ver tamaño de archivos y directorios
+du -sh <ruta>
+

@@ -1,0 +1,89 @@
+# Básicos
+
+% Directorio actual
+pwd
+
+% Listar archivos y directorios
+ls
+
+% Listar todos los archivos
+ls -la
+
+% Moverse a un directorio
+cd <directorio>
+
+% Crear archivo
+touch <archivo>
+
+% Leer archivo
+cat <archivo>
+
+% Crear directorio
+mkdir <nombre>
+
+% Crear ruta de directorios
+mkdir -p <ruta>
+
+% Encontrar archivos por nombre
+find <directorio> -name "*.txt"
+
+% Copiar archivo
+cp <origen> <destino>
+
+% Copiar directorio recursivamente
+cp -r <origen> <destino>
+
+% Mover o renombrar archivo
+mv <origen> <destino>
+
+% Eliminar archivo
+rm <archivo>
+
+% Eliminar directorio recursivamente
+rm -r <directorio>
+
+% Eliminar directorio sin pedir confirmación
+rm -rf <directorio>
+
+% Crear enlace simbólico
+ln -s <objetivo> <enlace>
+
+% Ver los primeros 10 líneas
+head <archivo>
+
+% Ver las últimas 10 líneas
+tail <archivo>
+
+% Ver últimas líneas siguiendo el archivo (logs)
+tail -f <archivo>
+
+% Contar líneas/palabras/caracteres
+wc <archivo>
+
+% Ordenar líneas
+sort <archivo>
+
+% Eliminar líneas duplicadas
+sort -u <archivo>
+
+% Ver historial de comandos
+history
+
+% Ver manual de un comando
+man <comando>
+
+% Buscar ayuda de un comando
+tldr <comando>
+
+% Ver memoria disponible
+free -h
+
+% Ver versión del sistema
+uname -a
+
+% Reiniciar el sistema operativo
+reboot
+
+% Discos y particiones
+lsblk
+
