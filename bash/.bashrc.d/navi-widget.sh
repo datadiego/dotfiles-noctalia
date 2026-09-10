@@ -1,5 +1,5 @@
 _navi_call() {
-   local result="$(navi "$@" </dev/tty)"
+   local result="$(command navi "$@" </dev/tty)"
    printf "%s" "$result"
 }
 
