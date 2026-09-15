@@ -22,4 +22,11 @@ unset rc
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
-eval "$(try init)"
+try() {
+  unset -f try
+  eval "$(command try init)"
+  try "$@"
+}
+
+# Turso
+export PATH="$PATH:/home/datadiego/.turso"
