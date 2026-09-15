@@ -26,9 +26,9 @@ function M.setup(hl, terminal, fileManager)
 					break
 				end
 			end
-			local w = math.floor(mon.width * 0.7)
-			local h = math.floor(mon.height * 0.8)
-			hl.dispatch(hl.dsp.exec_cmd("hyprctl dispatch resize exact " .. w .. " " .. h))
+			local w = math.floor(mon.width / mon.scale * 0.7)
+			local h = math.floor(mon.height / mon.scale * 0.8)
+			hl.dispatch(hl.dsp.window.resize({ x = w, y = h, relative = false }))
 			hl.dispatch(hl.dsp.window.center())
 		end
 	end)
@@ -37,6 +37,23 @@ function M.setup(hl, terminal, fileManager)
 	hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(terminal .. " -e lsoff"))
 	hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 	hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("noctalia msg settings-toggle"))
+	hl.bind(mainMod .. " + G", function()
+		local win = hl.get_active_window()
+		hl.dispatch(hl.dsp.window.float({ action = "set" }))
+		local monitors = hl.get_monitors()
+		local mon = monitors[1]
+		for _, m in ipairs(monitors) do
+			if m.id == win.monitor then
+				mon = m
+				break
+			end
+		end
+		local w = math.floor(mon.width / mon.scale * 0.6)
+		local h = math.floor(mon.height / mon.scale * 0.6)
+		hl.dispatch(hl.dsp.window.resize({ x = w, y = h, relative = false }))
+		hl.dispatch(hl.dsp.window.center())
+		hl.dispatch(hl.dsp.window.pin())
+	end)
 	hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 	hl.bind(mainMod .. " + N", function()
 		local state_file = os.getenv("HOME") .. "/.config/hypr/.layout_toggle_state"
