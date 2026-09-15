@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PACKAGES := hyprland niri bash nvim noctalia btop opencode ruby navi cheatsheets
+PACKAGES := hyprland niri nushell bash nvim noctalia btop opencode ruby navi cheatsheets
 #PHONY hace que siempre se ejecute la accion asociada en el Makefile
 .PHONY: help install common coding hacking hacking-tools dev-tools install-dependencies install-noctalia git-config stow post-install check-sudo unstow clean
 
@@ -37,6 +37,7 @@ stow:
 	@rm -f ~/.bashrc
 	@rm -rf ~/.config/nvim
 	@rm -rf ~/.config/noctalia
+	@rm -rf ~/.config/nushell
 	@rm -rf ~/.gemrc
 	@for pkg in $(PACKAGES); do \
 		echo "Stowing $$pkg..."; \

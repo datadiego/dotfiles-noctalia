@@ -1,0 +1,205 @@
+clear
+ls
+ls | sort-by size
+ls | sort-by size | where type == dir
+clear
+ps | sort-by cpu | first 10
+ps | sort-by cpu | reverse|  first 10
+ps | sort-by mem | reverse|  first 10 | select pid name mem
+ps 
+ps | first 10
+clear
+ps | first 3
+clear
+ps | first 3 | wl-copy 
+ps | first 3
+clear
+ps | first 3
+cd
+clear
+ps | first 3
+clear
+ps | first 3
+ps | sort-by mem | first 3
+ps | sort-by mem | reverse | first 3
+clear
+ps | sort-by mem | reverse | first 3
+ps | sort-by mem | reverse | first 3 | select pid name mem
+clear
+help
+hel commands
+clear
+help commands
+tutor
+tutor begin
+ls
+ls | select name
+tutor tables
+ls | get name
+tutor cells
+ls | select 4 | get name
+(ls).4.name
+help commands
+help commands | where category == filters
+help commands
+help commands | where category == formats
+help commands 
+exit
+clear
+cat usuarios.json
+cat usuarios.json | columns
+clear
+cat usuarios.json | describe 
+clear
+cat usuarios.json | wl-copy 
+cat usuarios.json | from json 
+clear
+cat usuarios.json | from json 
+cat usuarios.json | from json | where edad > 30
+cat usuarios.json | from json | to csv
+cat usuarios.csv | from csv | to json
+cat usuarios.csv
+cat usuarios.csv | from csv
+cat usuarios.csv | from csv | to json
+clear
+cat usuarios.csv | from csv | to html 
+cat usuarios.csv | from csv | to md 
+ps
+ps | where name == nvim
+clear
+cd
+clear
+ps | where name == nvim
+clear
+ps aux
+ps -aux
+ps | where name == nvim | get pid
+clear
+ps | where name == nvim | get pid
+cat usuarios.json | from json
+cat usuarios.json | from json | select id nombre edad email direccion
+cat usuarios.json | from json | select id nombre edad email direccion_fiscal
+cat usuarios.json | from json | select id nombre edad email direccion
+cat usuarios.json | from json | columns
+cat usuarios.json | from json | select id nombre edad email
+cat usuarios.json | from json | select id nombre edad email direccion
+exit
+clear
+cat usuarios.json | from json | select id nombre edad email direccion
+cat usuarios.json | from json 
+cat usuarios.json | from json | get direccion
+cat usuarios.json | from json | columns
+cat usuarios.json | from json | get redes_sociales
+cat usuarios.json | from json 
+let usuario = cat usuarios.json | from json 
+$usuario[0]
+$usuario.[0]
+$usuario
+$usuario | get 1
+$usuario | get 0
+clear
+cat usuarios.json | from json | get 1
+n usuarios.json
+exit
+cat usuarios.json | from json | get 1
+exit
+clear
+cat usuarios.json | from json | get 1
+cat usuarios.json | from json
+clear
+cat usuarios.json | from json
+cat usuarios.json | from json | columns
+clear
+cat usuarios.json | from json
+clear
+cat usuarios.json | from json | columns
+clear
+cat usuarios.json | from json | columns | get 0
+cat usuarios.json | from json | get 0
+clear
+cat usuarios.json | from json | get 0 | explore 
+let usuario = cat usuarios.json | from json | get 0 
+$usuario.redes_sociales.handler
+$usuario.direccion.piso
+clear
+let usuario = cat usuarios.json | from json | get 0 
+$usuario.direccion.calle
+clear
+$usuario.direccion.calle
+clear
+sqlite3 test.db "SELECT * FROM gatitos"
+sqlite3 test.db "SELECT * FROM gatos"
+sqlite3 test.db "SELECT * FROM gatos" | lines
+sqlite3 test.db --csv "SELECT * FROM gatos"
+sqlite3 test.db --csv "SELECT * FROM gatos" | from csv
+sqlite3 test.db --csv --header "SELECT * FROM gatos" | from csv 
+open test.db
+clear
+open test.db
+clear
+ss -tulnp
+ss -tulnp<\n>| lines<\n>| skip 1<\n>| parse "{netid} {state} {recvq} {sendq} {local} {peer} {process}"
+ss -tulnp --json
+def ss [] {<\n>    ^ss -tulnpH<\n>    | lines<\n>    | each { |line|<\n>        let x = ($line | split row -r '\s+')<\n><\n>        {<\n>            protocol: $x.0<\n>            state: $x.1<\n>            recvq: ($x.2 | into int)<\n>            sendq: ($x.3 | into int)<\n>            local: $x.4<\n>            peer: $x.5<\n>            process: ($x | skip 6 | str join ' ')<\n>        }<\n>    }<\n>}
+ss
+```nu<\n>def ss [] {<\n>    ^ss -tulnpH<\n>    | lines<\n>    | each { |line|<\n>        let fields = ($line | split row -r '\s+')<\n><\n>        let process_info = if ($fields | length) > 6 {<\n>            $fields<\n>            | skip 6<\n>            | str join ' '<\n>        } else {<\n>            ""<\n>        }<\n><\n>        let local = $fields.4<\n>        let peer = $fields.5<\n><\n>        # Separa dirección y puerto.<\n>        # IPv6 aparece como [::1]:631, mientras que IPv4 como 127.0.0.1:631.<\n>        let local_parts = if ($local | str starts-with '[') {<\n>            let match = ($local | parse -r '^\[(?<address>.*)\]:(?<port>.*)$')<\n>            if ($match | is-empty) {<\n>                { address: $local, port: null }<\n>            } else {<\n>                $match.0<\n>            }<\n>        } else {<\n>            let match = ($local | parse -r '^(?<address>.*):(?<port>[^:]*)$')<\n>            if ($match | is-empty) {<\n>                { address: $local, port: null }<\n>            } else {<\n>                $match.0<\n>            }<\n>        }<\n><\n>        let peer_parts = if ($peer | str starts-with '[') {<\n>            let match = ($peer | parse -r '^\[(?<address>.*)\]:(?<port>.*)$')<\n>            if ($match | is-empty) {<\n>                { address: $peer, port: null }<\n>            } else {<\n>                $match.0<\n>            }<\n>        } else {<\n>            let match = ($peer | parse -r '^(?<address>.*):(?<port>[^:]*)$')<\n>            if ($match | is-empty) {<\n>                { address: $peer, port: null }<\n>            } else {<\n>                $match.0<\n>            }<\n>        }<\n><\n>        {<\n>            protocol: $fields.0<\n>            state: $fields.1<\n>            recv_q: ($fields.2 | into int)<\n>            send_q: ($fields.3 | into int)<\n>            local_address: $local_parts.address<\n>            local_port: $local_parts.port<\n>            peer_address: $peer_parts.address<\n>            peer_port: $peer_parts.port<\n>            process: $process_info<\n>        }<\n>    }<\n>}<\n>```<\n>
+```nu<\n>def ss [] {<\n>    ^ss -tulnpH<\n>    | lines<\n>    | each { |line|<\n>        let f = ($line | split row -r '\s+')<\n><\n>        let local = ($f | get 4)<\n>        let peer = ($f | get 5)<\n><\n>        let local_parsed = if ($local | str starts-with '[') {<\n>            $local<\n>            | parse -r '^\[(?<address>.*)\]:(?<port>.*)$'<\n>            | get 0<\n>        } else {<\n>            $local<\n>            | parse -r '^(?<address>.*):(?<port>[^:]*)$'<\n>            | get 0<\n>        }<\n><\n>        let peer_parsed = if ($peer | str starts-with '[') {<\n>            $peer<\n>            | parse -r '^\[(?<address>.*)\]:(?<port>.*)$'<\n>            | get 0<\n>        } else {<\n>            $peer<\n>            | parse -r '^(?<address>.*):(?<port>[^:]*)$'<\n>            | get 0<\n>        }<\n><\n>        let process = if (($f | length) > 6) {<\n>            $f<\n>            | skip 6<\n>            | str join ' '<\n>        } else {<\n>            ""<\n>        }<\n><\n>        {<\n>            protocol: ($f | get 0)<\n>            state: ($f | get 1)<\n>            recv_q: (($f | get 2) | into int)<\n>            send_q: (($f | get 3) | into int)<\n>            local_address: ($local_parsed | get address)<\n>            local_port: ($local_parsed | get port)<\n>            peer_address: ($peer_parsed | get address)<\n>            peer_port: ($peer_parsed | get port)<\n>            process: $process<\n>        }<\n>    }<\n>}<\n>```<\n>
+def ss [] { ^ss -tulnpH | lines | each { |line| let f = ($line | split row -r '\s+') let local = ($f | get 4) let peer = ($f | get 5) let local_parsed = if ($local | str starts-with '[') { $local | parse -r '^\[(?<address>.*)\]:(?<port>.*)$' | get 0 } else { $local | parse -r '^(?<address>.*):(?<port>[^:]*)$' | get 0 } let peer_parsed = if ($peer | str starts-with '[') { $peer | parse -r '^\[(?<address>.*)\]:(?<port>.*)$' | get 0 } else { $peer | parse -r '^(?<address>.*):(?<port>[^:]*)$' | get 0 } let process = if (($f | length) > 6) { $f | skip 6 | str join ' ' } else { "" } { protocol: ($f | get 0) state: ($f | get 1) recv_q: (($f | get 2) | into int) send_q: (($f | get 3) | into int) local_address: ($local_parsed | get address) local_port: ($local_parsed | get port) peer_address: ($peer_parsed | get address) peer_port: ($peer_parsed | get port) process: $process } } }
+n ss.sh
+nvim ss.sh
+cat ss.sh | wl-copy 
+def ss [] {<\n>    ^ss -tulnpH<\n>    | lines<\n>    | each { |line|<\n>        let f = ($line | split row -r '\s+')<\n><\n>        let local = ($f | get 4)<\n>        let peer = ($f | get 5)<\n><\n>        let local_parsed = if ($local | str starts-with '[') {<\n>            $local<\n>            | parse -r '^\[(?<address>.*)\]:(?<port>.*)$'<\n>            | get 0<\n>        } else {<\n>            $local<\n>            | parse -r '^(?<address>.*):(?<port>[^:]*)$'<\n>            | get 0<\n>        }<\n><\n>        let peer_parsed = if ($peer | str starts-with '[') {<\n>            $peer<\n>            | parse -r '^\[(?<address>.*)\]:(?<port>.*)$'<\n>            | get 0<\n>        } else {<\n>            $peer<\n>            | parse -r '^(?<address>.*):(?<port>[^:]*)$'<\n>            | get 0<\n>        }<\n><\n>        let process = if (($f | length) > 6) {<\n>            $f<\n>            | skip 6<\n>            | str join ' '<\n>        } else {<\n>            ""<\n>        }<\n><\n>        {<\n>            protocol: ($f | get 0)<\n>            state: ($f | get 1)<\n>            recv_q: (($f | get 2) | into int)<\n>            send_q: (($f | get 3) | into int)<\n>            local_address: ($local_parsed | get address)<\n>            local_port: ($local_parsed | get port)<\n>            peer_address: ($peer_parsed | get address)<\n>            peer_port: ($peer_parsed | get port)<\n>            process: $process<\n>        }<\n>    }<\n>}<\n>
+ss
+clear
+ls
+n config.nu
+vim config.nu
+nvim config.nu
+exit
+ss
+n ss.sh
+vim ss.sh
+nvim ss.sh
+nvim config.nu
+chmod +x ss.sh
+exit
+ss
+clear
+nvim config.nu
+exit
+ss
+./ss.sh
+chmod +x ss.sh
+./ss.sh
+clear
+n ss.sh
+nvim ss.sh
+def ss [] {<\n>    ^ss -tulnpH<\n>    | lines<\n>    | each { |line|<\n>        let f = ($line | split row -r '\s+')<\n><\n>        let local = ($f | get 4)<\n>        let peer = ($f | get 5)<\n><\n>        let local_parsed = if ($local | str starts-with '[') {<\n>            $local<\n>            | parse -r '^\[(?<address>.*)\]:(?<port>.*)$'<\n>            | get 0<\n>        } else {<\n>            $local<\n>            | parse -r '^(?<address>.*):(?<port>[^:]*)$'<\n>            | get 0<\n>        }<\n><\n>        let peer_parsed = if ($peer | str starts-with '[') {<\n>            $peer<\n>            | parse -r '^\[(?<address>.*)\]:(?<port>.*)$'<\n>            | get 0<\n>        } else {<\n>            $peer<\n>            | parse -r '^(?<address>.*):(?<port>[^:]*)$'<\n>            | get 0<\n>        }<\n><\n>        let process = if (($f | length) > 6) {<\n>            $f<\n>            | skip 6<\n>            | str join ' '<\n>        } else {<\n>            ""<\n>        }<\n><\n>        {<\n>            protocol: ($f | get 0)<\n>            state: ($f | get 1)<\n>            recv_q: (($f | get 2) | into int)<\n>            send_q: (($f | get 3) | into int)<\n>            local_address: ($local_parsed | get address)<\n>            local_port: ($local_parsed | get port)<\n>            peer_address: ($peer_parsed | get address)<\n>            peer_port: ($peer_parsed | get port)<\n>            process: $process<\n>        }<\n>    }<\n>}<\n>
+ss
+clear
+ss
+clear
+cat ss.nu
+ss -tulnp
+exit
+ss
+ss -putan
+exit
+ss
+cat ss.nu
+cat ss.nu | wl-copy 
+ls
+tail config.nu
+clear
+exit
+ss
+clear
+ss
+ss | reject recv_q send_q
+ss | reject recv_q send_q state
+ss | reject recv_q send_q state local_port
+clear
+ss | reject recv_q send_q state local_port
+ss | reject recv_q send_q state local_port peer_port
+ss | reject recv_q send_q state local_port peer_address
+ss | reject recv_q send_q state local_port peer_address peer_port

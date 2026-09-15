@@ -4,8 +4,10 @@ sudo dnf update -y
 # utilidades
 sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl fd curl wget hyprshot -y
 
-# navi
+# nushell
+sudo dnf install -y nu
 
+# navi
 sudo dnf install -y navi
 
 # alacritty
