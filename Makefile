@@ -39,6 +39,8 @@ stow:
 	@rm -rf ~/.config/noctalia
 	@rm -rf ~/.config/nushell
 	@rm -rf ~/.gemrc
+	@rm -rf ~/.cheatsheets
+	@rm -rf ~/.config/navi
 	@for pkg in $(PACKAGES); do \
 		echo "Stowing $$pkg..."; \
 		stow -S "$$pkg"; \
