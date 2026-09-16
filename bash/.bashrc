@@ -28,6 +28,4 @@ try() {
   try "$@"
 }
 
-# Turso
-export PATH="$PATH:/home/datadiego/.turso"
 fish

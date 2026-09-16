@@ -13,12 +13,27 @@ _load_nvm() {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
-nvm() { _load_nvm; nvm "$@"; }
-node() { _load_nvm; node "$@"; }
-npm() { _load_nvm; npm "$@"; }
-npx() { _load_nvm; npx "$@"; }
-corepack() { _load_nvm; corepack "$@"; }
-
+nvm() {
+  _load_nvm
+  nvm "$@"
+}
+node() {
+  _load_nvm
+  node "$@"
+}
+npm() {
+  _load_nvm
+  npm "$@"
+}
+npx() {
+  _load_nvm
+  npx "$@"
+}
+corepack() {
+  _load_nvm
+  corepack "$@"
+}
+export PATH="$PATH:/home/datadiego/.turso"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
