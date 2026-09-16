@@ -7,6 +7,9 @@ sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow b
 # nushell
 sudo dnf install -y nu
 
+# fish
+sudo dnf install -y fish
+
 # navi
 sudo dnf install -y navi
 
