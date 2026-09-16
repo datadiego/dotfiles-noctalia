@@ -7,6 +7,12 @@ sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow b
 # nushell
 sudo dnf install -y nu
 
+# jc
+pipx install jc
+
+# wormhole
+pipx install magic-wormhole
+
 # fish
 sudo dnf install -y fish
 
