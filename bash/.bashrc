@@ -28,4 +28,4 @@ try() {
   try "$@"
 }
 
-fish
+exec fish
