@@ -1,4 +1,3 @@
-set -gx gatito meowcifer
 set -gx TERMINAL alacritty
 set -gx EDITOR nvim
 set -gx BUN_INSTALL "$HOME/.bun"
