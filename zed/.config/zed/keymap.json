@@ -43,6 +43,15 @@
     },
   },
   {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "q": "vim::AnyQuotes",
+      "b": "vim::AnyBrackets",
+      "Q": "vim::MiniQuotes",
+      "B": "vim::MiniBrackets"
+    }
+  },
+  {
     "context": "Workspace",
     "unbind": {
       "ctrl-~": "workspace::NewTerminal"
