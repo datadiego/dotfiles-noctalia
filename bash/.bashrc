@@ -29,3 +29,6 @@ try() {
 }
 
 exec fish
+
+# druk
+export PATH=/home/datadiego/.druk/bin:$PATH

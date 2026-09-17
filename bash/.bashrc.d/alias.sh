@@ -9,4 +9,3 @@ alias gl="git log --oneline"
 alias gc="git add . && git commit -m"
 alias qr="qrencode -t UTF8 -m 3"
 alias uvinit=" uv init --no-package"
-
