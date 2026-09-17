@@ -1,0 +1,65 @@
+return {
+  {
+    "milanglacier/minuet-ai.nvim",
+    opts = {
+      provider = "openai_fim_compatible",
+      n_completions = 1,
+      context_window = 512,
+      throttle = 300,
+      debounce = 100,
+      request_timeout = 2.5,
+      virtualtext = {
+        auto_trigger_ft = {
+          "bash",
+          "c",
+          "cpp",
+          "css",
+          "go",
+          "html",
+          "java",
+          "javascript",
+          "javascriptreact",
+          "json",
+          "jsonc",
+          "lua",
+          "markdown",
+          "php",
+          "python",
+          "ruby",
+          "rust",
+          "scss",
+          "sh",
+          "sql",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "yaml",
+        },
+        keymap = {
+          accept = "<A-a>",
+          accept_line = "<A-l>",
+          accept_n_lines = "<A-n>",
+          prev = "<A-[>",
+          next = "<A-]>",
+          dismiss = "<A-e>",
+        },
+      },
+      provider_options = {
+        openai_fim_compatible = {
+          api_key = "TERM",
+          name = "Ollama",
+          end_point = "http://localhost:11434/v1/completions",
+          model = "qwen2.5-coder:0.5b",
+          stream = true,
+          optional = {
+            max_tokens = 15,
+            top_p = 0.9,
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      require("minuet").setup(opts)
+    end,
+  },
+}
