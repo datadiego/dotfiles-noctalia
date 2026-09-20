@@ -7,7 +7,7 @@ return {
       context_window = 512,
       throttle = 300,
       debounce = 100,
-      request_timeout = 2.5,
+      request_timeout = 0.0,
       virtualtext = {
         auto_trigger_ft = {
           "bash",
@@ -52,7 +52,7 @@ return {
           model = "qwen2.5-coder:0.5b",
           stream = true,
           optional = {
-            max_tokens = 15,
+            max_tokens = 60,
             top_p = 0.9,
           },
         },
