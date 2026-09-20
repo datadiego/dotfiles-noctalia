@@ -66,3 +66,7 @@ gem install try-cli --user-install
 pipx install asciinema
 
 cargo install --locked --git https://github.com/asciinema/agg
+
+# vm-curator
+sudo dnf install rust-libudev-devel -y
+cargo install vm-curator -y
