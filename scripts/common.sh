@@ -4,6 +4,9 @@ sudo dnf update -y
 # utilidades
 sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl fd curl wget hyprshot -y
 
+# cargo
+sudo dnf install cargo
+
 # nushell
 sudo dnf install -y nu
 
@@ -58,3 +61,8 @@ sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
 sudo dnf install ruby -y
 echo 'gem: -n ~/.local/bin' >>~/.gemrc
 gem install try-cli --user-install
+
+# asciinema
+pipx install asciinema
+
+cargo install --locked --git https://github.com/asciinema/agg
