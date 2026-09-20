@@ -5,7 +5,7 @@ sudo dnf update -y
 sudo dnf install pipx unzip xclip yq jq fzf stow eza tldr fastfetch micro stow btop brightnessctl fd curl wget hyprshot -y
 
 # cargo
-sudo dnf install cargo
+sudo dnf install cargo -y
 
 # nushell
 sudo dnf install -y nu

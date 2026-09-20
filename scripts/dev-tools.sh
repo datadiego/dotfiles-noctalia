@@ -1,4 +1,4 @@
-sudo dnf instal -y pgcli
+sudo dnf install -y pgcli
 sudo dnf install -y httpie
 
 #sql
