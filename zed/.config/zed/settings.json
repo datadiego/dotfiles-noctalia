@@ -7,10 +7,22 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "ollama": {
+      "model": "qwen2.5-coder:0.5b"
+    },
+    "provider": "zed"
+  },
   "agent": {
+    "inline_assistant_model": {
+      "provider": "ollama",
+      "model": "qwen2.5-coder:7b",
+      "enable_thinking": false
+    },
+    "default_profile": "ask",
     "default_model": {
       "provider": "ollama",
-      "model": "qwen2.5-coder:1.5b",
+      "model": "qwen2.5-coder:0.5b",
       "enable_thinking": false
     },
     "favorite_models": [],
