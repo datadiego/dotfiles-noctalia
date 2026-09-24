@@ -18,7 +18,7 @@ return {
       "vue",
       "yaml",
     }) do
-      opts.formatters_by_ft[ft] = { lsp_format = "never" }
+      opts.formatters_by_ft[ft] = { "prettier" }
     end
     opts.formatters_by_ft.python = { "ruff", "black" }
     opts.formatters_by_ft.lua = { "stylua" }
