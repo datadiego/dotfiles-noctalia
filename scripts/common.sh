@@ -70,3 +70,5 @@ cargo install --locked --git https://github.com/asciinema/agg
 # vm-curator
 sudo dnf install rust-libudev-devel -y
 cargo install vm-curator -y
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
