@@ -899,3 +899,4 @@ $env.config = {
 
 # Custom commands
 use ~/.config/nushell/ss.nu
+source "~/.cargo/env.nu"
