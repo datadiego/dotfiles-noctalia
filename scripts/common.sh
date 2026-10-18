@@ -72,3 +72,6 @@ sudo dnf install rust-libudev-devel -y
 cargo install vm-curator -y
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# runtime intel
+sudo dnf install -y intel-opencl ocl-icd clinfo -y
